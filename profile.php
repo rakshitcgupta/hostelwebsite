@@ -42,6 +42,7 @@
 		$last_name = $_SESSION['last_name'];
 		$email = $_SESSION['email'];
 		$active = $_SESSION['active'];
+		$myComplaint = $_POST['myComplaint'];
 ?>
 <!DOCTYPE html>
 <html >
@@ -58,7 +59,7 @@
 
 <link rel="stylesheet" href="custom.css">
 	<title>Welcome <?= $first_name.' '.$last_name ?></title>
-	<?php include 'css/css.html'; 
+	<?php include 'css/css1.html'; 
 		?>
 </head>
 <body data-spy="scroll" data-target="#hostelnav">
@@ -107,56 +108,44 @@
 
 	<div class="form">
 		<div class="tab-content">
-			<h1 style="color:blue;margin-left:30px;">Welcome</h1>
-			<p>
-			<?php 
-				    
-				// Display message about account verification link only once
-				if ( isset($_SESSION['message']) )
-				{
-					echo $_SESSION['message'];
-				  
-					// Don't annoy the user with more messages upon page refresh
-					unset( $_SESSION['message'] );
-				}
-			?>
-			</p>
+			<h1 style="color:;margin-left:;">Welcome</h1>
 			<?php
 				
 				// Keep reminding the user this account is not active, until they activate
-				if ( !$active ){
+				/*if ( !$active ){
 					echo
 					'<div class="info">
 					Account is unverified, please confirm your email by clicking
 					on the email link!
 					</div>';
-				}
+				}*/
 			?>
           
 			<h2><?php echo $first_name.' '.$last_name; ?></h2>
 			<p><?= $email ?></p>
-			<a href="logout.php"><button class="button button-block" name="logout"/>Log Out</button></a>
+			
 
     
 			<?php
 			
 			
-			if ( isset($_POST['myComplaint']) )
+			/*if ( isset($_POST['myComplaint']) )
 			{
-             $myComplaint =$mysqli->escape_string($_POST['myComplaint']);
-              //echo $myComplaint;
+             $_SESSION['myComplaint'] =$mysqli->escape_string($_POST['myComplaint']);
+              $myComplaint = $_SESSION['myComplaint'];
               }
-          
+          */
 			//echo $_SESSION['password'];
 			//$myComplaint = $_POST['myComplaint'];
 			//echo $myComplaint;
-			$first_name=$_SESSION['first_name'];
+			/*$first_name=$_SESSION['first_name'];
 			$last_name=$_SESSION['last_name'];
-			$email=$_SESSION['email'];
+			$email=$_SESSION['email'];*/
+			
 			
 $sql = "INSERT INTO users (first_name,last_name,email,Complaint )"."VALUES ('$first_name','$last_name','$email','$myComplaint')";
 			if($mysqli->query($sql)){
-				echo "yes";
+				//echo "yes";
 			}
 			else{
 				//echo $_SESSION['password'];
@@ -179,26 +168,31 @@ $sql = "INSERT INTO users (first_name,last_name,email,Complaint )"."VALUES ('$fi
 				else{			
 					$result = $mysqli->query("SELECT complaint FROM users where email = '".$_SESSION['email']."'");
 				?>
-				<h2>Your Current Complaint : </h2>
+				<h2>Your Current Complaints : </h2>
+				
+				
 				<h3> 
 					<?php while($row = $result->fetch_array())
 					{echo ($row['complaint']); 
 					echo "<br />";}?></h3>
 				<h3> Enter your complaint here : </h3>
-					<form action="";  method="post" >
+					<form action=""  method="post" >
 		 
-			<div>
+		
+		   <div class="field-wrap">
             <label>
-              Complaint
+             Complaint<span class="req">*</span>
             </label>
              <!-- <input type="textarea" required autocomplete="off" name='myComplaint'/>-->
 			 <textarea rows="5" cols="10" name="myComplaint">
 			 </textarea>
+			
           </div>
            
          
           <button type="submit" class="button button-block" name="submitcom" />submit...</button>
           	</form>
+			<a href="logout.php"><button class="button button-block" name="logout"/>Log Out</button></a>
 				</div>
 			<?php 
 			
