@@ -9,7 +9,6 @@ session_start();
   <meta charset="UTF-8">
 	<title>SPIT Hostel</title>
 
-	<script src="first.js"></script>
 	<!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -87,27 +86,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         <li class="tab"><a href="#signup">Sign Up</a></li>
         <li class="tab active"><a href="#login">Log In</a></li>
       </ul>
-      
+	  
+	  
       <div class="tab-content">
 
          <div id="login">   
           <h1>Welcome Back!</h1>
           
-          <form action="index.php" method="post" autocomplete="off">
+          <form action="index.php" method="post" >
           
-            <div class="field-wrap">
+            <div class="field-wrap" >
             <label>
               Email Address<span class="req">*</span>
             </label>
-            <input type="email" required autocomplete="off" name="email"/>
+            <input type="email" id="email" name="email"/>
           </div>
           
           <div class="field-wrap">
             <label>
               Password<span class="req">*</span>
             </label>
-            <input type="password" required autocomplete="off" name="password"/>
-          </div>
+            <input id="password" type="password" name="password"/><span id="demo"></span>
+		  </div>
 
           <button class="button button-block" name="login" />Log In</button>
           
@@ -125,14 +125,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
               <label>
                 First Name<span class="req">*</span>
               </label>
-              <input type="text" required autocomplete="off" name='firstname' />
-            </div>
+              <input id="name" type="text"   name='firstname' />
+		    </div>	
         
             <div class="field-wrap">
               <label>
                 Last Name<span class="req">*</span>
               </label>
-              <input type="text"required autocomplete="off" name='lastname' />
+              <input id="name" type="text" name='lastname' />
             </div>
           </div>
 
@@ -140,14 +140,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             <label>
               Email Address<span class="req">*</span>
             </label>
-            <input type="email"required autocomplete="off" name='email' />
+            <input type="email" name='email' />
           </div>
           
           <div class="field-wrap">
             <label>
               Set A Password<span class="req">*</span>
             </label>
-            <input type="password"required autocomplete="off" name='password'/>
+            <input id="password" type="password" name='password'/>
           </div>
           
           <button type="submit" class="button button-block" name="register" />Register</button>
@@ -182,9 +182,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 			</div>
 		</div>
 	</div>
-
-			
-
+	
+       
 <script src="http://code.jquery.com/jquery-2.2.1.min.js"></script>
 	<!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>

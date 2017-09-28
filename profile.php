@@ -50,7 +50,7 @@
 	<meta charset="UTF-8">
 	<title>SPIT Hostel</title>
 
-	<script src="first.js"></script>
+	<script type="text/javascript" src="first.js"></script>
 	<!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -164,6 +164,7 @@ $sql = "INSERT INTO users (first_name,last_name,email,Complaint )"."VALUES ('$fi
 					<li><?php echo ($x_value);?></li>
 						<?php } ?>
 				</ul>
+					<a href="logout.php"><button class="button button-block" name="logout"/>Log Out</button></a>
 				<?php }
 				else{			
 					$result = $mysqli->query("SELECT complaint FROM users where email = '".$_SESSION['email']."'");
@@ -184,7 +185,7 @@ $sql = "INSERT INTO users (first_name,last_name,email,Complaint )"."VALUES ('$fi
              Complaint<span class="req">*</span>
             </label>
              <!-- <input type="textarea" required autocomplete="off" name='myComplaint'/>-->
-			 <textarea rows="5" cols="10" name="myComplaint">
+			 <textarea rows="5" cols="10"  name="myComplaint" onblur="validname();">
 			 </textarea>
 			
           </div>
